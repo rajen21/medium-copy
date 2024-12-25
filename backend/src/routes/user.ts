@@ -56,7 +56,7 @@ userRoutes.post('/signup', async (c) => {
 userRoutes.post('/signin', async (c) => {
   const body = await c.req.json();
   const { success } = signinInput.safeParse(body);
-  if (success) {
+  if (!success) {
     c.status(411);
     return c.json({
       message: "Input not correct!"
